@@ -143,5 +143,13 @@ Here are some middleware code for you to implement.
     - must have the header `version: 1.0`
       - if not respond back with `{ "error": "bad headers" }`
 
+# Setting up Knex.js (2nd iteration)
+
+In the following iteration of this project, each resource will be interacting with a database and its own individual table. Now we need to integrate `knex.js` to help us build our tables and query them for data!
+
+First, let's create a local database called **`articles-products`**. Now we can refer to the [knex.js setup guide](https://gist.github.com/NigelEarle/80150ff1c50031e59b872baf0e474977) and [knex.js migrations guide]( https://gist.github.com/NigelEarle/70db130cc040cc2868555b29a0278261) to help us get our project up and running with `knex.js`.
+
+We will be doing our dynamic database queries using specifically the **knex.raw()** method from `knex.js` with raw SQL queries. You can refer to the official documentation for creating raw queries [here](http://knexjs.org/#Raw-Queries).
+
 ## Stretch Goal
 MAKE IT PRETTY
