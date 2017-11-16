@@ -143,9 +143,40 @@ Here are some middleware code for you to implement.
     - must have the header `version: 1.0`
       - if not respond back with `{ "error": "bad headers" }`
 
+---
+
 # Setting up Knex.js (2nd iteration)
 
-In the following iteration of this project, each resource will be interacting with a database and its own individual table. Now we need to integrate `knex.js` to help us build our tables and query them for data!
+In the following iteration of this project, each resource will be interacting with a database and its own individual table. 
+
+### Create database and tables
+
+Let's start by creating a `articles-products.sql` script file in our `db` directory to create create our database and tables. 
+
+Name your database `articles_products` and create the `articles` and `products` tables with the correct schema.
+
+**Example SQL script structure**
+
+```
+.
+├── db
+│   └── products.js
+│   └── articles.js
+│   └── articles-products.sql
+...
+```
+
+Run the script from the root of your project to create your database and tables.
+
+```bash
+$ \i db/articles-products.sql;
+```
+
+If you enter into `psql`, you should be able to see your DB and tables!
+
+### Knex.js
+
+Now, we need to integrate `knex.js` to help us build our tables and query them for data!
 
 First, let's create a local database called **`articles-products`**. Now we can refer to the [knex.js setup guide](https://gist.github.com/NigelEarle/80150ff1c50031e59b872baf0e474977) and [knex.js migrations guide]( https://gist.github.com/NigelEarle/70db130cc040cc2868555b29a0278261) to help us get our project up and running with `knex.js`.
 
