@@ -4,9 +4,9 @@ class Articles {
   constructor() {
 
   }
-  
-  getAllArticles() {
 
+  getAllArticles() {
+    return knex.raw('select * from articles');
   }
 
   addNewArticle() {
