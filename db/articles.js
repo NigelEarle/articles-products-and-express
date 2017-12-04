@@ -1,3 +1,5 @@
+const knex = require('../knex');
+
 class Articles {
 
 }
