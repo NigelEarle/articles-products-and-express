@@ -15,6 +15,6 @@ CREATE TABLE articles (
 CREATE TABLE products (
   id serial PRIMARY KEY,
   name varchar(255) NOT NULL,
-  price integer NOT NULL,
+  price decimal(10, 3) NOT NULL,
   inventory integer NOT NULL
 );
