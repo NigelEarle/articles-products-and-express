@@ -2,7 +2,6 @@ const knex = require('../knex');
 
 class Products {
   constructor() {
-
   }
 
   getAllProducts() {
@@ -18,7 +17,6 @@ class Products {
   }
 
   getProductById(id) {
-    if (!id) return Promise.reject('Must pass in product id');
 
     return knex.raw(`select * from products where id = ${id}`);
   }
@@ -32,8 +30,8 @@ class Products {
     );
   }
 
-  removeProductById() {
-
+  removeProductById(id) {
+    return knex.raw(`delete from products where id = ${id}`)
   }
 
   validate(body) {
