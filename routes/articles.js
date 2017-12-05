@@ -48,11 +48,12 @@ router.route('/:title')
   })
   .put((req, res) => {
     const { title } = req.params;
-    req.body.urlTitle = encodeURI(req.body.title);
+    const encodedTitle = encodeURI(req.body.title);
+    req.body.urlTitle = encodedTitle;
 
     return Articles.editArticleByTitle(title, req.body)
     .then(result => {
-      // redirect to /articles/:title
+      // redirect to /articles/:title - use encodedTitle
       return res.json(result);
     })
     .catch(err => {
