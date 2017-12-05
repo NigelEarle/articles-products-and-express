@@ -13,15 +13,15 @@ class Articles {
 
   }
 
-  getArticleById() {
+  getArticleByTitle() {
 
   }
 
-  updateArticleById() {
+  updateArticleByTitle() {
 
   }
 
-  removeArticleById() {
+  removeArticleByTitle() {
 
   }
 

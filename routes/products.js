@@ -17,19 +17,22 @@ router.route('/')
   });
 
 router.get('/new', (req, res) => {
+  // Serve HTML new template
 });
 
 router.route('/:id')
   .get((req, res) => {
-
+    return Products.getProductById()
   })
   .put((req, res) => {
-
+    return Products.editProductById()
   })
   .delete((req, res) => {
-
+    return Products.removeProductById()
   });
 
-router.get('/:id/edit', (req, res) => {});
+router.get('/:id/edit', (req, res) => {
+  // Server HTML edit template
+});
 
 module.exports = router;
