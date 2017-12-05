@@ -11,18 +11,25 @@ class Products {
 
   addNewProduct(body) {
     if (!this.validate(body)) return Promise.reject('Invalid body data');
-    
-    return knex.raw(`INSERT INTO products(name, price, inventory)
-      VALUES ('${body.name}', ${parseFloat(body.price)}, ${parseInt(body.inventory)} )`
+
+    return knex.raw(`insert into products(name, price, inventory)
+      values ('${body.name}', ${parseFloat(body.price)}, ${parseInt(body.inventory)} )`
     );
   }
 
-  getProductById() {
+  getProductById(id) {
+    if (!id) return Promise.reject('Must pass in product id');
 
+    return knex.raw(`select * from products where id = ${id}`);
   }
 
-  updateProductById() {
+  editProductById(id, body) {
+    if (!this.validate(body)) return Promise.reject('Invalid body data');
 
+    return knex.raw(`update products
+      set name = '${body.name}', price = ${parseFloat(body.price)}, inventory = ${parseInt(body.inventory)}
+      where id = ${id}`
+    );
   }
 
   removeProductById() {

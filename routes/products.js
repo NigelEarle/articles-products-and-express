@@ -15,7 +15,6 @@ router.route('/')
     })
   })
   .post((req, res) => {
-    console.log(req.body)
     return Products.addNewProduct(req.body)
     .then(result => {
       // redirect to GET /products route
@@ -47,7 +46,8 @@ router.route('/:id')
   })
   .put((req, res) => {
     const { id } = req.params;
-
+    
+    console.log(req.body);
     return Products.editProductById(id, req.body)
     .then(result => {
       // redirect 
