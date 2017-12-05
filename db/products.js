@@ -17,7 +17,6 @@ class Products {
   }
 
   getProductById(id) {
-
     return knex.raw(`select * from products where id = ${id}`);
   }
 

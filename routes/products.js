@@ -3,6 +3,7 @@ const Products = require('../db/products');
 const router = express.Router();
 
 // NO FRONT END SOLUTIONS: strictly demonstrating db, route layers
+
 router.route('/')
   .get((req, res) => {
     return Products.getAllProducts()
