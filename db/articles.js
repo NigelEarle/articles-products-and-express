@@ -18,17 +18,17 @@ class Articles {
     return knex.raw(`select * from articles where title = '${title}'`)
   }
 
-  editArticleByTitle(body) {
+  editArticleByTitle(title, body) {
     if (!this.validate(body)) return Promise.reject('Invalid body data');
 
     return knex.raw(`update articles
-      set title = ${body.title}, body = ${body.body}, author = ${body.author}, urlTitle = ${body.urlTitle}
-      where title = ${body.title}`
+      set title = '${body.title}', body = '${body.body}', author = '${body.author}', urlTitle = '${body.urlTitle}'
+      where title = '${title}'`
     );
   }
 
   removeArticleByTitle(title) {
-    return knex.raw(`delete from articles where title = ${title}`)
+    return knex.raw(`delete from articles where title = '${title}'`)
   }
 
   validate(body) {

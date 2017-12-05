@@ -15,7 +15,8 @@ router.route('/')
     });
   })
   .post((req, res) => {
-    req.body.urlTitle = encodeURI(req.body.title);
+    const encodedTitle = encodeURI(req.body.title);
+    req.body.urlTitle = encodedTitle;
 
     return Articles.addNewArticle(req.body)
     .then(result => {
@@ -35,6 +36,7 @@ router.get('/new', (req, res) => {
 router.route('/:title')
   .get((req, res) => {
     const { title } = req.params;
+
     return Articles.getArticleByTitle(title)
     .then(article => {
       // single article template with article data
@@ -45,14 +47,43 @@ router.route('/:title')
     })
   })
   .put((req, res) => {
-    return Articles.editArticleByTitle()
-  })
-  // .delete((req, res) => {
-  //   return Articles.removeArticleByTitle()
-  // });
+    const { title } = req.params;
+    req.body.urlTitle = encodeURI(req.body.title);
 
-// router.get('/:title/edit', (req, res) => {
-//   // Server HTML edit template
-// });
+    return Articles.editArticleByTitle(title, req.body)
+    .then(result => {
+      // redirect to /articles/:title
+      return res.json(result);
+    })
+    .catch(err => {
+      // redirect to /articles/:title/edit
+      return res.json(err);
+    })
+  })
+  .delete((req, res) => {
+    const { title } = req.params;
+    return Articles.removeArticleByTitle(title)
+    .then(result => {
+      // redirect to /articles
+      return res.json(result);
+    })
+    .catch(err => {
+      // redirect to /articles/:title
+      return res.json(err);
+    })
+  });
+
+router.get('/:title/edit', (req, res) => {
+  // Serve HTML edit template with articles
+  const { title } = req.params;
+
+  return Articles.getArticleByTitle(title)
+  .then(article => {
+    return res.json({ article: article.rows })
+  })
+  .catch(err => {
+    return res.json(err);
+  })
+});
   
 module.exports = router;
