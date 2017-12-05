@@ -166,19 +166,17 @@ Name your database `articles_products` and create the `articles` and `products` 
 ...
 ```
 
-Run the script from the root of your project to create your database and tables.
+Enter into the `psql` shell and run the script from the root of your project to create your database and tables.
 
 ```bash
 $ \i db/articles-products.sql;
 ```
 
-If you enter into `psql`, you should be able to see your DB and tables!
-
 ### Knex.js
 
-Now, we need to integrate `knex.js` to help us build our tables and query them for data!
+Now, we need to integrate `knex.js` to help us perform our tables and query them for data!
 
-First, let's create a local database called **`articles-products`**. Now we can refer to the [knex.js setup guide](https://gist.github.com/NigelEarle/80150ff1c50031e59b872baf0e474977) and [knex.js migrations guide]( https://gist.github.com/NigelEarle/70db130cc040cc2868555b29a0278261) to help us get our project up and running with `knex.js`.
+Folow the [knex.js setup guide](https://gist.github.com/NigelEarle/80150ff1c50031e59b872baf0e474977) to get `knex.js` integrated into your project.
 
 We will be doing our dynamic database queries using specifically the **knex.raw()** method from `knex.js` with raw SQL queries. You can refer to the official documentation for creating raw queries [here](http://knexjs.org/#Raw-Queries).
 
